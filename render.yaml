@@ -1,12 +1,20 @@
 services:
-  - type: web
-    name: esgi-nodejs-app
+  - name: esgi-nodejs-app
+    type: web
     runtime: node
     plan: free
     buildCommand: npm install
     startCommand: npm start
+    region: frankfurt
+    branch: main
     envVars:
-      - key: NODE_ENV
-        value: production
-      - key: PORT
-        value: 10000
+      - key: DATABASE_URL
+        fromDatabase: 
+          name: esgi-nodejs-db
+          property: connectionString
+
+databases:
+  - name: esgi-nodejs-db
+    plan: free
+    region: frankfurt
+    
