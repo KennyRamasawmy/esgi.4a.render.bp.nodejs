@@ -2,7 +2,6 @@ services:
   - type: web
     name: esgi-nodejs-app
     runtime: node
-    runtimeVersion: 18
     plan: free
     buildCommand: npm install
     startCommand: npm start
